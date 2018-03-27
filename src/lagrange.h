@@ -1,5 +1,6 @@
 //  Distributed Key Generator
-//  Copyright 2012 Aniket Kate <aniket@mpi-sws.org>, Andy Huang <y226huan@uwaterloo.ca>, Ian Goldberg <iang@uwaterloo.ca>
+//  Copyright 2012 Aniket Kate <aniket@mpi-sws.org>, Andy Huang <y226huan@uwaterloo.ca>, Ian Goldberg
+//  <iang@uwaterloo.ca>
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of version 3 of the GNU General Public License as
@@ -34,8 +35,9 @@
 // \sum_{i=0}^{num-1} coeffs[i] * f(indices[i]) = f(alpha)
 //
 // for any polynomial f of degree at most num-1
-const vector <Zr> lagrange_coeffs(const vector <Zr> indices, const Zr& alpha);
-//void lagrange_coeffs(size_t num, Zr* coeffs, Zr* indices, const Zr& alpha);
+const vector<Zr>
+lagrange_coeffs(const vector<Zr> indices, const Zr & alpha);
+// void lagrange_coeffs(size_t num, Zr* coeffs, Zr* indices, const Zr& alpha);
 
 // Apply Lagrange coefficients.
 // coeffs is the array of element_t of length num set by the above
@@ -45,8 +47,10 @@ const vector <Zr> lagrange_coeffs(const vector <Zr> indices, const Zr& alpha);
 // the reconstructed value is placed in falpha (a member of that same group)
 //
 
-//const G1 lagrange_apply(size_t num, Zr *coeffs, G1 *shares);
-const G1 lagrange_apply(const vector <Zr> coeffs, const vector <G1> shares);
-//For Zr
-const Zr lagrange_apply(const vector <Zr> coeffs, const vector <Zr> shares);
+// const G1 lagrange_apply(size_t num, Zr *coeffs, G1 *shares);
+const G1
+lagrange_apply(const vector<Zr> coeffs, const vector<G1> shares);
+// For Zr
+const Zr
+lagrange_apply(const vector<Zr> coeffs, const vector<Zr> shares);
 #endif

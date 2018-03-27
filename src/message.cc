@@ -1,5 +1,6 @@
 //  Distributed Key Generator
-//  Copyright 2012 Aniket Kate <aniket@mpi-sws.org>, Andy Huang <y226huan@uwaterloo.ca>, Ian Goldberg <iang@uwaterloo.ca>
+//  Copyright 2012 Aniket Kate <aniket@mpi-sws.org>, Andy Huang <y226huan@uwaterloo.ca>, Ian Goldberg
+//  <iang@uwaterloo.ca>
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of version 3 of the GNU General Public License as
@@ -21,10 +22,14 @@
 
 int Message::msgctr;
 
-int Message::next_ID () {
-        return Message::msgctr++;
+int
+Message::next_ID()
+{
+    return Message::msgctr++;
 }
 
-void Message::init_ctr() {
-        Message::msgctr = 0;
+void
+Message::init_ctr()
+{
+    Message::msgctr = 0;
 }

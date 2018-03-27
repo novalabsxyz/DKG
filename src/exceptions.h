@@ -1,5 +1,6 @@
 //  Distributed Key Generator
-//  Copyright 2012 Aniket Kate <aniket@mpi-sws.org>, Andy Huang <y226huan@uwaterloo.ca>, Ian Goldberg <iang@uwaterloo.ca>
+//  Copyright 2012 Aniket Kate <aniket@mpi-sws.org>, Andy Huang <y226huan@uwaterloo.ca>, Ian Goldberg
+//  <iang@uwaterloo.ca>
 //
 //  This program is free software; you can redistribute it and/or modify
 //  it under the terms of version 3 of the GNU General Public License as
@@ -24,20 +25,31 @@
 
 using namespace std;
 
-class Exception: public runtime_error {
-    public: Exception(string str = ""): 
-	  runtime_error("DKG Exception: "+str) { }
+class Exception : public runtime_error
+{
+  public:
+    Exception(string str = "")
+        : runtime_error("DKG Exception: " + str)
+    {
+    }
 };
-class InvalidMessageException: public Exception { };
-
-class InvalidSignatureException: public InvalidMessageException { };
-
-class InvalidSystemParamFileException: public Exception { 
-public: 
-  InvalidSystemParamFileException(string str):
-	Exception("Invalid System-Parameter File: "+str){}
+class InvalidMessageException : public Exception
+{
 };
 
-//class NonExistingPairingException: public Exception { };
+class InvalidSignatureException : public InvalidMessageException
+{
+};
+
+class InvalidSystemParamFileException : public Exception
+{
+  public:
+    InvalidSystemParamFileException(string str)
+        : Exception("Invalid System-Parameter File: " + str)
+    {
+    }
+};
+
+// class NonExistingPairingException: public Exception { };
 
 #endif

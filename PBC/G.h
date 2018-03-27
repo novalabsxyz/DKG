@@ -6,66 +6,72 @@
 
 using namespace std;
 
-class G {//Group
-public:
+class G
+{ // Group
+  public:
+    // Destructor
+    ~G();
 
-  //Destructor
-  ~G();
+    bool isIdentity() const;
+    void setElement(const element_t & el);
 
-  bool isIdentity() const;
-  void setElement(const element_t& el);
+    // Create an element from hash
+    // Assumes that g is already initialized
+    // void setElement(const void* data,  unsigned short len);
 
-  //Create an element from hash
-  //Assumes that g is already initialized
-  //void setElement(const void* data,  unsigned short len);
+    // Create an element from import
+    // Assumes that g is already initialized and for element of type GT
+    // bool compressed is not set to true
+    // void setElement(const unsigned char *data, unsigned short len,
+    //				  bool compressed = false, unsigned short base = 16);
 
-  //Create an element from import
-  //Assumes that g is already initialized and for element of type GT
-  //bool compressed is not set to true
-  //void setElement(const unsigned char *data, unsigned short len, 
-  //				  bool compressed = false, unsigned short base = 16);
+    const element_t & getElement() const;
+    unsigned short    getElementSize() const;
+    bool              isElementPresent() const
+    {
+        return elementPresent;
+    }
 
-  const element_t& getElement() const;
-  unsigned short getElementSize() const;
-  bool isElementPresent() const{return elementPresent;}
+    string toString() const;
 
-  string toString() const;
-  
-  // Dump the element to stdout (print friendly)
-  void dump(FILE *f, const char *label = NULL,
-			unsigned short base = 16) const;	
+    // Dump the element to stdout (print friendly)
+    void dump(FILE * f, const char * label = NULL, unsigned short base = 16) const;
 
-protected:	
-  element_t g;
-  bool elementPresent;
+  protected:
+    element_t g;
+    bool      elementPresent;
 
-  //Intialize with another element and assign identity or same element
-  G(const G &h, bool identity=false);
+    // Intialize with another element and assign identity or same element
+    G(const G & h, bool identity = false);
 
-  //Copy constructor
-  //G(const G &h);
+    // Copy constructor
+    // G(const G &h);
 
-  //Create a null element
-  G() {elementPresent = false;}
+    // Create a null element
+    G()
+    {
+        elementPresent = false;
+    }
 
-  //Create and initialize an element
-  G(const Pairing &e){ 
-	elementPresent = e.isPairingPresent();
-  }
+    // Create and initialize an element
+    G(const Pairing & e)
+    {
+        elementPresent = e.isPairingPresent();
+    }
 
-  // Assignment operator 
-  G& operator=(const G &rhs);  
+    // Assignment operator
+    G & operator=(const G & rhs);
 
-  //Arithmetic Assignment Operators
-  G& operator*=(const G &rhs);
-  G& operator/=(const G &rhs);
-  G& operator^=(const Zr &exp);
+    // Arithmetic Assignment Operators
+    G & operator*=(const G & rhs);
+    G & operator/=(const G & rhs);
+    G & operator^=(const Zr & exp);
 
-  bool operator==(const G &rhs) const;
-  const G inverse() const;
-  const G square() const;
+    bool operator==(const G & rhs) const;
+    const G inverse() const;
+    const G square() const;
 
-private:
-  void nullify();
+  private:
+    void nullify();
 };
 #endif
