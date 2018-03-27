@@ -187,7 +187,7 @@ VSSEchoMessage::VSSEchoMessage(const Buddy * buddy, const string & str, int g_re
     : NetworkMessage(str)
 {
     const unsigned char * bodyptr = (const unsigned char *)str.data() + headerLength;
-    unsigned int          bodylen = str.size() - headerLength;
+    size_t                bodylen = str.size() - headerLength;
     read_us(bodyptr, bodylen, dealer);
     read_ui(bodyptr, bodylen, ph);
     C = Commitment(buddy->get_param(), bodyptr, bodylen);
