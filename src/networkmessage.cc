@@ -331,7 +331,7 @@ VSSSharedMessage::VSSSharedMessage(const Buddy * buddy, const string & str, int 
     read_ui(bodyptr, bodylen, ph);
     read_us(bodyptr, bodylen, dealer);
     // Read ReadyMessage
-    size_t length;
+    unsigned int length;
     read_ui(bodyptr, bodylen, length);
 
     const unsigned char * signstart = bodyptr;
