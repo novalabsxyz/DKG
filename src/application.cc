@@ -95,7 +95,7 @@ Application::Application(SystemType   systemtype,
             exit(1);
         }
 
-        res = bind(listenfd, (sockaddr *)&sin, sizeof(sin));
+        res = ::bind(listenfd, (sockaddr *)&sin, sizeof(sin));
 
         if (res < 0)
         {
