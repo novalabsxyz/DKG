@@ -90,7 +90,7 @@ class Node : public Application
     NodeState      nodeState;
     set<NodeID>    SendReceived; // This keeps track whether send message is received from a node
     CommitmentType commType;
-    multimap<NodeID, Commitment> C;          // Commitments received
+    multimap<NodeID, Commitment>    C;       // Commitments received
     map<NodeID, CommitmentAndShare> C_final; // DealerIDs and commitment+shares completed
     set<NodeID>        DecidedVSSs;          // DealerIDs for the dealer set (size = t+1) finalized for the node
     CommitmentAndShare result;               // Final Commitment and Share
@@ -690,9 +690,9 @@ Node::run()
                         {
                             // 2t+f+1 = n-t-f ready messages received -> VSS Share is complete
 
-                            vector<NodeID> zero;           // zero.push_back(0);Zero is anyways computed
-                            bool       EchoOrReady = true; // EchoOrReady = Ready
-                            vector<Zr> subshare    = it->second.interpolate(sysparams, EchoOrReady, zero);
+                            vector<NodeID> zero;               // zero.push_back(0);Zero is anyways computed
+                            bool           EchoOrReady = true; // EchoOrReady = Ready
+                            vector<Zr>     subshare    = it->second.interpolate(sysparams, EchoOrReady, zero);
 
                             // Add the commitment and the subshare to final set C_final
                             CommitmentAndShare mns;
@@ -1209,7 +1209,7 @@ Node::run()
                             validLeaderChangeMsgCnt -= sysparams.get_n() - sysparams.get_t()
                                                        - sysparams.get_f(); // remove count (n-t-f) for the next leader
                             nextSmallestLeader = buddyset.get_previous_leader(); // Set new smallest Leader
-                            nodeState = FUNCTIONAL; // nodeState is no longer Leader_Change_Started
+                            nodeState          = FUNCTIONAL; // nodeState is no longer Leader_Change_Started
                             startAgreement();
                         }
                     }
