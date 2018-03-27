@@ -1,7 +1,7 @@
 SRCS=$(wildcard *.cc)
 OBJS=$(subst .cc,.o,$(SRCS))
 
-CXXFLAGS=-g -O2 -Wall
+CXXFLAGS=-g -O2 -Wall --std=c++11
 
 all: libPBC.a Testing
 
