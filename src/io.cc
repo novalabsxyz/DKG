@@ -44,7 +44,7 @@ write_ui(string & body, size_t v)
 }
 
 void
-read_ui(const unsigned char *& buf, size_t & len, size_t & v)
+read_ui(const unsigned char *& buf, size_t & len, unsigned int & v)
 {
     if (len < 4)
         throw InvalidMessageException();
