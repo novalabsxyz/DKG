@@ -25,6 +25,7 @@
 
 #include "systemparam.h"
 #include <fstream>
+#include <gcrypt.h>
 #include <gnutls/x509.h>
 #include <queue>
 #include <string>
