@@ -24,6 +24,7 @@
 #include <iostream>
 #include <sys/socket.h>
 #include <sys/types.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -167,7 +168,7 @@ BuddySet::init_contact_list(const char * filename)
         {
             getline(certfile, cert, '\0');
             certfile.close();
-            Buddy * newbuddy = new Buddy(*this, -1, id); // fd = -1 as there is no circuit yet
+            Buddy * newbuddy          = new Buddy(*this, -1, id); // fd = -1 as there is no circuit yet
             idmap[newbuddy->get_id()] = newbuddy;
             newbuddy->set_cert(cert);
         }
