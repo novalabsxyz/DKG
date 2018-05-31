@@ -28,8 +28,8 @@ main()
 {
     // unsigned int n,t;
     string strU, typeStr;
-    string sysParamFileStr     = "system.param";
-    string pairingParamFileStr = "pairing.param";
+    string sysParamFileStr     = "ss512.system.param";
+    string pairingParamFileStr = "ss512.pairing.param";
     // FILE *pairingParamFile = fopen("pairing.param","r");
     // if (pairingParamFile == NULL) {
     //  cerr<<"Can't open pairing parameter file "<<"pairing.param" << "\n";
@@ -65,12 +65,13 @@ main()
     //    element_init_Zr(five, e);
     //    element_set_si(five, 5);
 
-    Polynomial   a, b(e, 0, five), c(e, 3), d(e, 1, five), f(e, 2, six, five);
-    BiPolynomial a1, b1(e, 0, five), c1(e, 4), d1(e, 2, five);
+    Polynomial   a, b(param, 0, five), c(param, 3), d(param, 1, five), f(param, 2, six, five);
+    BiPolynomial a1, b1(param, 0, five), c1(param, 4), d1(param, 2, five);
 
-    // a1.dump(stdout, "a1");
+    f.dump(stdout, "f", 10);
+		f(six).dump(stdout, "f(six)", 10);
     // b1.dump(stdout, "b1");
-    // c1.dump(stdout, "c1");
+    c1.dump(stdout, "c1", 10);
     d1.dump(stdout, "d1");
     d1.getCoeff(0, 0).dump(stdout, "d1(0,0)");
     printf("Degree %d", d1.degree());
@@ -94,12 +95,12 @@ main()
     Polynomial p2   = c1(six);
     Zr         ans1 = p1(six);
     Zr         ans2 = p2(five);
-    // b.dump(stdout, "b");
-    // d.dump(stdout, "d");
-    ans1.dump(stdout, "c1(5,6)");
-    ans2.dump(stdout, "c1(6,5)");
+    b.dump(stdout, "b");
+    d.dump(stdout, "d");
+    ans1.dump(stdout, "c1(5,6)", 10);
+    ans2.dump(stdout, "c1(6,5)", 10);
 
-    /*
+    
         BiPolynomial f1 = b1;
     f1.dump(stdout, "f=b");
 
@@ -119,7 +120,7 @@ main()
 
     rediff += rediff;
     rediff.dump(stdout, "rediff+rediff");
-        */
+        
 
     /*
 // Pick four random indices for interpolation

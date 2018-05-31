@@ -3,20 +3,20 @@ OBJS=$(subst .cc,.o,$(SRCS))
 
 CXXFLAGS=-g -O0 -Wall --std=c++11 -I..
 
-all: node BLSclient
+all: node BLSclient polytest
 
 COMMON_OBJS=application.o networkmessage.o usermessage.o buddy.o \
 		buddyset.o systemparam.o bipolynomial.o polynomial.o lagrange.o \
 		commitment.o commitmentmatrix.o commitmentvector.o io.o timer.o message.o
 
 node: node.o $(COMMON_OBJS)
-	g++ -g -static -o $@ $^ -L../PBC -lPBC -lpthread -lgnutls -lpbc -lgmp -lgcrypt -lgpg-error -ltasn1 -lz
+	g++ -g  -o $@ $^ -L../PBC -lPBC -lpthread -lgnutls -lpbc -lgmp -lgcrypt -lgpg-error -ltasn1 -lz
 
 BLSclient: blsclient.o $(COMMON_OBJS)
-	g++ -g -static -o $@ $^ -L../PBC -lPBC -lpthread -lgnutls -lpbc -lgmp -lgcrypt -lgpg-error -ltasn1 -lz
+	g++ -g -o $@ $^ -L../PBC -lPBC -lpthread -lgnutls -lpbc -lgmp -lgcrypt -lgpg-error -ltasn1 -lz
 
 polytest: polytest.o bipolynomial.o polynomial.o lagrange.o systemparam.o
-	g++ -g -o $@ $^ -L../PBC -lPBC -lpthread -lgnutls -lpbc
+	g++ -g -o $@ $^ -L../PBC -lPBC -lpthread -lgnutls -lpbc -lgmp
 
 commitmentmatrix:  commitmentmatrix.o bipolynomial.o polynomial.o io.o \
 	systemparam.o lagrange.o

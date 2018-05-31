@@ -23,6 +23,7 @@
 // Create a random symmetric bivariate polynomial of degree t >= 0
 BiPolynomial::BiPolynomial(const SystemParam & sys, unsigned int t)
 {
+    vector<vector<Zr>> coeffs;
     for (unsigned int i = 0; i <= t; ++i)
     {
         vector<Zr> row;
